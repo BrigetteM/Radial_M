@@ -1,585 +1,298 @@
 <!DOCTYPE html>
-
 <!-- Adapted from http://2centsapiece.blogspot.com.au/2013/11/radial-tree-diagram-with-d3js.html -->
-
 <html>
-
 <head>
-
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
       <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-
   <style type="text/css">
 
- 
-
 svg {
-
   display: block;
-
   margin: auto;
-
 }
-
- 
 
 .node circle {
 
   fill: #BCED91;
-
   stroke: #458B00;
-
   stroke-width: 2.5px;
-
 }
-
- 
 
 .node {
-
   font-family: verdana, sans-serif;
-
   font-size: 11px;
-
   font-weight: bold;
-
   fill: #6B4226;
-
 }
-
- 
 
 .link {
-
   fill: none;
-
   stroke: #BFBFBF;
-
   stroke-width: 2px;
-
 }
-
   </style>
 
- 
-
   <title></title>
-
- 
 
 <script type='text/javascript'>//<![CDATA[
 
 window.onload=function(){
-
 var root = {
-
 "name": "Medicare Benefits System",
-
 "children": [
-
- 
 
   {
 
    "name": "1. Professional Attendances",
-
    "children": [
-
- 
-
+   
     {
 
     "name": "1. Professional Attendances",
-
      "children": [
-
       {"name": "A1 General Practitioner"},
-
       {"name": "A2 Other non-referred"},
-
       {"name": "A3 Specialist"},
-
       {"name": "A4 Consultant Physician (other than Psychiatry)"},
-
       {"name": "A5 Prolonged"},
-
       {"name": "A6 Group Therapy (other than by psychiatrist)"},
-
       {"name": "A7 Acupuncture"},
-
       {"name": "A8 Consultant Psychiatrist"},
-
       {"name": "A9 Contact Lenses"},
-
       {"name": "A10 Optometrical Consultations"},
-
       {"name": "A11 After Hours"},
-
       {"name": "A12 Consultant Occupational Physician"},
-
       {"name": "A13 Public Health Physician Attendances"},
-
       {"name": "A14 Health Assessments"},
-
       {"name": "A15 Multidisciplinary Care Plans and Case Conferences"},
-
       {"name": "A16 Medical practitioner (Sports Physician) Attendances"},
-
       {"name": "A17 Domiciliary Medication Management Review (DMMR)"},
-
       {"name": "A18 GP attendance associated with PIP incentive payments"},
-
       {"name": "A19 Other non-referred attendance associated with PIP incentive payments"},
-
       {"name": "A20 GP Mental Health Treatment"},
-
       {"name": "A21 Medical Practitioner (Emergency Physican)attendances"},
-
       {"name": "A22 GP after-hours attendances to which no other item applies"},
-
       {"name": "A23 Other non-referred after-hours attendances to which no other item applies"},
-
       {"name": "A24 Pain and Palliative Medicine"},
-
       {"name": "A26 Neurosurgery Attendances to which no other item applies"},
-
       {"name": "A27 Pregnancy Support Counselling"},
-
       {"name": "A28 Geriatric Medicine"},
-
       {"name": "A29 Early Intervention Services for Children"},
-
       {"name": "A30 Medical Practitioner (GP/Spec/or Cons. Phy.)Telehealth Attendances"},
-
       {"name": "A31 Addiction Medicine"},
-
       {"name": "A32 Sexual Health Medicine"}
-
       ]
-
     }
 
- 
-
   ]
-
 },
-
- 
 
   {
 
    "name": "2. Diagnostic and Pathology",
-
-   "children": [
-
+  "children": [
     {
-
     "name": "2. Diagnostic Procedures and Investigations",
-
      "children": [
 
- 
-
       {"name": "D1 Miscellaneous Diagnostic Procedures and Investigations"},
-
       {"name": "D2 Nuclear Medicine (non-imaging)"}
-
      ]
-
     },
-
- 
 
     {
 
     "name": "5 Diagnostic Imaging Services",
-
      "children": [
-
- 
-
       {"name": "I1 Ultrasound"},
-
       {"name": "I2 Computerised Tomography"},
-
       {"name": "I3 Diagnostic Radiology"},
-
       {"name": "I4 Nuclear Medicine Imaging"},
-
       {"name": "I6 Miscellaneous Services"}
-
      ]
-
     },
 
- 
-
     {
-
     "name": "6 Pathology Services",
-
      "children": [
-
- 
 
        {"name": "P1 Haematology"},
-
        {"name": "P2 Chemical"},
-
        {"name": "P3 Microbiology"},
-
        {"name": "P4 Immunology"},
-
        {"name": "P5 Tissue Pathology"},
-
        {"name": "P6 Cytopathology"},
-
        {"name": "P7 Cytogenetics"},
-
        {"name": "P8 Infertility and Pregnancy Tests"},
-
        {"name": "P9 Simple Basic Tests"},
-
-       {"name": "P10 Patient Episode Initiation"}.
-
+       {"name": "P10 Patient Episode Initiation"},
        {"name": "P11 Specimen Referred"},
-
        {"name": "P12 Management of Bulk Billed Services"},
-
        {"name": "P13 Bulk Billed Pathology Episode Incentive Items"}
 
- 
-
      ]
-
     },
 
- 
-
     {
-
     "name": "8 Miscellaneous Services",
-
      "children": [
 
- 
-
 {"name": "M1 Management of Bulk Billed services"},
-
 {"name": "M2 Services provided by practice nurse on behalf of medical practitioner"},
-
 {"name": "M3 Allied Health Services"},
-
 {"name": "M6 Psychological Therapy Services"},
-
 {"name": "M7 Focussed Psychological Strategies"},
-
 {"name": "M8 Pregnancy Support Counselling"},
-
 {"name": "M9 Allied Health Group Services"},
-
 {"name": "M10 Pervasive Developmental Disorder Services"},
-
 {"name": "M11 Allied Health Services for Indigenous People who have had a Health Check"},
-
 {"name": "M12 Services provided by a Practice Nurse/Registered Aboriginal Health Worker"},
-
 {"name": "M13 Midwife"},
-
 {"name": "M14 Nurse Practitioner"},
-
 {"name": "M15 Diagnostic Audiology Services"}
-
      ]
-
-    }
-
- 
-
+    } 
    ]
-
   },
-
- 
 
   {
 
-   "name": "Oral and Maxillofacial Services",
-
+   "name": "3. Oral and Maxillofacial Services",
    "children": [
-
- 
-
     {
-
      "name": "10 Dental Benefits Schedule",
-
      "children": [
 
- 
-
       {"name": "B1 Preventative Dental Services"},
-
       {"name": "U0 Diagnostic Services"},
-
       {"name": "U1 Preventive Services"},
-
       {"name": "U2 Periodontic Services"},
-
       {"name": "U3 Oral Surgery"},
-
       {"name": "U5 Restorative Services"},
-
       {"name": "U7 Prosthodontic Services"},
-
       {"name": "U9 General Services"}
-
      ]
-
     },
-
  
-
     {
 
      "name": "4. Oral and Maxillofacial Services (by Approved Dental Practitioners)",
-
      "children": [
-
- 
-
         {"name": "O1 Consultations"},
-
         {"name": "O2 Assistance at Operation"},
-
         {"name": "O3 General"},
-
         {"name": "O4 Plastic and Reconstructive"},
-
         {"name": "O5 Pre-Prosthetic"},
-
         {"name": "O6 Neurosurgical"},
-
         {"name": "O7 Ear, Nose and Throat"},
-
         {"name": "O8 Temporomandibular Joint"},
-
         {"name": "O9 Treatment of Fractures"},
-
         {"name": "O10 Diagnostic procedures and investigations"},
-
         {"name": "O11 No group"}
-
      ]
-
     },
-
- 
-
     {
-
      "name": "7 Cleft Lip and Cleft Palate",
-
      "children": [
-
  
-
         {"name": "C1 Orthodontic Services"},
-
         {"name": "C2 Oral Surgical Services"},
-
         {"name": "C3 General and Prosthodontic Services"}
-
      ]
-
     },
 
- 
-
     {
-
      "name": "9 Dentist, Dental Specialist and Dental Prosthetists",
-
      "children": [
-
  
-
       {"name": "N1 Dentist Services"},
-
       {"name": "N2 Dental Specialist Service"},
-
       {"name": "N3 Dental Prosthetist Services"}
-
      ]
-
     }
-
  
-
    ]
-
-  },
-
- 
-
- 
+  },  
 
   {
-
    "name": "4. Theraputic",
-
    "children": [
 
- 
-
     {
-
      "name": "3. Therapeutic Procedures",
-
      "children": [
-
  
-
         {"name": "T1 Miscellaneous Therapeutic Procedures"},
-
         {"name": "T2 Radiation Oncology"},
-
         {"name": "T3 Therapeutic Nuclear Medicine"},
-
         {"name": "T4 Obstetrics"},
-
         {"name": "T6 Anaesthetics"},
-
         {"name": "T7 Regional or Field Nerve Blocks"},
-
         {"name": "T8 Surgical Operations"},
-
         {"name": "T9 Assistance at Operations"},
-
         {"name": "T10 Relative Value Guide for Anaesthesia"},
-
         {"name": "T11 Botulinum Toxin Injections"}
-
      ]
-
     }
-
- 
-
    ]
-
   }
-
  
-
 ]
-
 };
-
- 
 
  
 
 var diameter = 1300;
 
- 
-
 var tree = d3.layout.tree()
-
     .size([360, diameter / 2 - 190])
-
     .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
- 
-
 var diagonal = d3.svg.diagonal.radial()
-
     .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
- 
 
 var svg = d3.select("body").append("svg")
-
     .attr("width", diameter + 20)
-
     .attr("height", diameter - 40)
-
   .append("g")
-
     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
- 
-
   var nodes = tree.nodes(root),
-
       links = tree.links(nodes);
 
- 
-
   var link = svg.selectAll(".link")
-
       .data(links)
-
     .enter().append("path")
-
       .attr("class", "link")
-
       .attr("d", diagonal);
 
- 
-
   var node = svg.selectAll(".node")
-
       .data(nodes)
-
     .enter().append("g")
-
       .attr("class", "node")
-
       .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
-
  
 
   node.append("circle")
-
       .attr("r", 5);
 
- 
-
   node.append("text")
-
       .attr("dy", ".31em")
-
       .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-
       .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
-
       .text(function(d) { return d.name; });
-
- 
 
 }//]]>
 
- 
 
 </script>
 
- 
-
- 
 
 </head>
 
- 
-
 <body>
-
   <h3 style="text-align:center">Chart title</h3>
-
 </body>
-
- 
 
 </html>
