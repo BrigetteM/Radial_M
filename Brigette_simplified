@@ -242,7 +242,7 @@ var root = {
 
  
 
-var diameter = 1300;
+var diameter = 2000;
 
 var tree = d3.layout.tree()
     .size([360, diameter / 2 - 190])
@@ -292,7 +292,7 @@ var svg = d3.select("body").append("svg")
 </head>
 
 <body>
-  <h3 style="text-align:center">Chart title</h3>
+  <h3 style="text-align:center">Medicare Benefits System</h3>
 </body>
 
 </html>
